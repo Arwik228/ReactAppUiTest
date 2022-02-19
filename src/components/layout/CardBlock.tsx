@@ -4,12 +4,14 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  View,
+  View
 } from 'react-native';
-import {Text, Layout, Card} from '@ui-kitten/components';
+import {Text, Layout, Icon,  Button} from '@ui-kitten/components';
 import Tts from 'react-native-tts';
 
 const width = Dimensions.get('window').width;
+
+const EventIcon = props => <Icon {...props} name="star" />;
 
 // Return  block
 export default props => {
@@ -18,8 +20,11 @@ export default props => {
   return (
     <Layout style={{justifyContent: 'center', backgroundColor: '#f2f4f7'}}>
       <View style={styles.card}>
-        <Image source={{uri: card.image}} style={styles.image} />
-
+        <View style={{position:"relative"}}>
+     
+            <Image source={{uri: card.image}} style={styles.image} />
+            <Button appearance="ghost" status="danger" accessoryLeft={EventIcon} style={{position:"absolute"}}/>
+        </View>
         <View style={styles.content}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Text onPress={() => Tts.speak(card.word)} category="h2">
