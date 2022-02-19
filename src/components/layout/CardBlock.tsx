@@ -21,7 +21,6 @@ export default props => {
     <Layout style={{justifyContent: 'center', backgroundColor: '#f2f4f7'}}>
       <View style={styles.card}>
         <View style={{position:"relative"}}>
-     
             <Image source={{uri: card.image}} style={styles.image} />
             <Button appearance="ghost" status="danger" accessoryLeft={EventIcon} style={{position:"absolute"}}/>
         </View>
