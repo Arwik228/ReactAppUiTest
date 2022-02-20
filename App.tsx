@@ -22,9 +22,9 @@ import ActionBar from './src/components/layout/ActionBar';
 const {Navigator, Screen} = createBottomTabNavigator();
 
 // Navigation bar icon load
-const RatingIcon = props => <Icon {...props} name="people-outline" />;
-const HomeIcon = props => <Icon {...props} name="home-outline" />;
-const ProfileIcon = props => <Icon {...props} name="person-outline" />;
+const RatingIcon = (props: object) => <Icon {...props} name="people-outline" />;
+const HomeIcon = (props: object) => <Icon {...props} name="home-outline" />;
+const ProfileIcon = (props: object) => <Icon {...props} name="person-outline" />;
 
 // Render navigation bar button
 const BottomTabBar = ({navigation, state}) => (

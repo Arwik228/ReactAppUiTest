@@ -4,6 +4,7 @@ import {Text, Layout} from '@ui-kitten/components';
 
 import CardBlock from './layout/CardBlock';
 import ProgressBar from './layout/ProgressBar';
+import ThemeBar from './layout/ThemeBar';
 
 const onScroll = (e: any) => {
   let contentOffset = e.nativeEvent.contentOffset;
@@ -13,7 +14,7 @@ const onScroll = (e: any) => {
 
 export default () => {
   const [object, setArrayCard] = React.useState({});
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(0);
 
   //TODO
   React.useEffect(() => {
@@ -31,15 +32,38 @@ export default () => {
         <View>
           <ScrollView
             horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            style={{marginVertical: 5}}>
+            <ThemeBar
+              themes={[
+                {id: 1, name: 'Новости'},
+                {id: 2, name: 'Кухня'},
+                {id: 3, name: 'Дом'},
+                {id: 4, name: 'Машина'},
+                {id: 5, name: 'Парк'},
+                {id: 6, name: 'Магазин'},
+              ]}
+              select={3}
+            />
+          </ScrollView>
+          <View
+            style={{
+              borderBottomColor: '#ced1d2',
+              borderBottomWidth: 1,
+              marginHorizontal: 12,
+            }}
+          />
+          <ScrollView
+            style={{paddingVertical: 10}}
+            horizontal={true}
             pagingEnabled={true}
-            onMomentumScrollEnd={e => setPage(onScroll(e) + 1)}>
+            showsHorizontalScrollIndicator={false}
+            onMomentumScrollEnd={e => setPage(onScroll(e))}>
             {object.cards.map((card, index) => (
               <CardBlock card={card} lang={object.language} key={index} />
             ))}
           </ScrollView>
-          <View>
-            <ProgressBar items={object.cards.length || 10} select={page} />
-          </View>
+          <ProgressBar items={object.cards.length || 10} select={page} />
         </View>
       ) : (
         <Text>Loading...</Text>

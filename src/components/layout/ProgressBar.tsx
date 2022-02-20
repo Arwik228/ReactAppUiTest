@@ -9,7 +9,7 @@ export default (props: object) => {
   return (
     <View style={styles.list}>
       {[...Array(props.items)].map((e, i) => {
-        return <View style={type(props.select, i + 1)} key={i}></View>;
+        return <View style={type(props.select, i)} key={i}></View>;
       })}
     </View>
   );
